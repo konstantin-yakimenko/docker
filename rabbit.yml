@@ -1,0 +1,15 @@
+version: '2'
+services:
+    verify-rabbit:
+        image: "rabbitmq:3-management"
+        hostname: "rabbit1"
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+            RABBITMQ_DEFAULT_USER: "guest"
+            RABBITMQ_DEFAULT_PASS: "guest"
+            RABBITMQ_DEFAULT_VHOST: "/"        
+# docker-compose -f rabbit.yml up -d
+# docker-compose -f rabbit.yml down
