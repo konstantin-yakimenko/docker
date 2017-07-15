@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  redis:
+    image: 'redis:latest'
+#    command: redis-server --requirepass redis
+    container_name: redis
+    ports:
+      - '6379:6379'
+
+# docker-compose -f redis.yml up -d
+# docker-compose -f redis.yml down
+
+# https://github.com/bitnami/bitnami-docker-redis
+
+    # image: 'bitnami/redis:latest'
+    # environment:
+    #   - REDIS_PASSWORD=123456
+    #   # - ALLOW_EMPTY_PASSWORD=yes
+    # ports:
+    #   - '6379:6379'
+    # volumes:
+    #   - /path/to/redis-persistence:/bitnami
