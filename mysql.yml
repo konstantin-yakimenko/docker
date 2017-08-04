@@ -1,11 +1,11 @@
 version: '2'
 services:
-    telestat-ndb:
+    verify-ndb:
         image: mysql:5.7
         environment:
             - MYSQL_USER=dev
             - MYSQL_PASSWORD=123456
-            - MYSQL_DATABASE=verify
+            - MYSQL_DATABASE=verification
             - MYSQL_ROOT_PASSWORD=123456
         ports:
             - 3306:3306

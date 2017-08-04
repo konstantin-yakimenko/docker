@@ -13,3 +13,4 @@ services:
             RABBITMQ_DEFAULT_VHOST: "/"        
 # docker-compose -f rabbit.yml up -d
 # docker-compose -f rabbit.yml down
+# http://localhost:15672
