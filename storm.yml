@@ -1,0 +1,33 @@
+version: '2'
+services:
+    zookeeper:
+        image: zookeeper
+        container_name: zookeeper
+        restart: always
+
+    nimbus:
+        image: storm
+        container_name: nimbus
+        command: storm nimbus
+        depends_on:
+            - zookeeper
+        links:
+            - zookeeper
+        restart: always
+        ports:
+            - 6627:6627
+
+    supervisor:
+        image: storm:1.1.1
+        container_name: supervisor
+        command: storm supervisor
+        depends_on:
+            - nimbus
+            - zookeeper
+        links:
+            - nimbus
+            - zookeeper
+        restart: always
+
+# docker-compose -f storm.yml up -d
+# docker-compose -f storm.yml down
