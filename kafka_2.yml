@@ -1,0 +1,25 @@
+version: '2'
+services:
+    zookeeper:
+        image: zookeeper:3.4.13
+        ports:
+          - 2181:2181
+        restart: always
+        hostname: zookeeper
+    kafka:
+        image: wurstmeister/kafka:2.12-2.2.0
+        hostname: kafka
+        environment:
+            KAFKA_CREATE_TOPICS: "topic-test:1:1"
+            KAFKA_ADVERTISED_HOST_NAME: kafka # docker-machine ip
+            KAFKA_ADVERTISED_PORT: 9092
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        ports:
+            - 9092:9092
+        restart: always
+        depends_on:
+            - "zookeeper"
+
+# docker-compose -f kafka_2.yml up -d
+# docker-compose -f kafka_2.yml down
+
